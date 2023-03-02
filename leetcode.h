@@ -60,14 +60,15 @@ public:
 
     int Find(int x)
     {
-        if (parent[x] == x)
-            return x;
-        return parent[x] = Find(parent[x]);
+        return parent[x] == x ? x : parent[x] = Find(parent[x]);
     }
 
     void Union(int x, int y)
     {
         int xRoot = Find(x), yRoot = Find(y);
+        if (xRoot == yRoot)
+            return;
+        parent[yRoot] = xRoot;
         if (xRoot != yRoot)
         {
             // parent[yRoot] = xRoot;
