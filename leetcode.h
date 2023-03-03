@@ -66,9 +66,6 @@ public:
     void Union(int x, int y)
     {
         int xRoot = Find(x), yRoot = Find(y);
-        if (xRoot == yRoot)
-            return;
-        parent[yRoot] = xRoot;
         if (xRoot != yRoot)
         {
             // parent[yRoot] = xRoot;
