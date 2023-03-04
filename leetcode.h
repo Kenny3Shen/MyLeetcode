@@ -16,6 +16,7 @@
 #include <sstream>
 #include <bitset>
 #include <regex>
+#include <cmath>
 using namespace std; // It is vital that never use "using namespace" in head file.
 using ll = long long;
 using PII = pair<int, int>;
@@ -27,7 +28,7 @@ struct ListNode
     int val;
     ListNode *next;
     ListNode() : val(0), next(nullptr) {}
-    ListNode(int x) : val(x), next(NULL) {}
+    ListNode(int x) : val(x), next(nullptr) {}
     ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
 
@@ -41,6 +42,8 @@ struct TreeNode
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 #endif
+
+//priority_queue<int, vector<int>, less<int>> pq; 默认大根堆，每次弹出最大值
 
 /* class UnionFind
 {
