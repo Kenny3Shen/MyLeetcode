@@ -43,7 +43,7 @@ struct TreeNode
 };
 #endif
 
-//priority_queue<int, vector<int>, less<int>> pq; 默认大根堆，每次弹出最大值
+// priority_queue<int, vector<int>, less<int>> pq; 默认大根堆，每次弹出最大值
 
 /* class UnionFind
 {
@@ -82,3 +82,57 @@ public:
         }
     }
 }; */
+
+/* void select_sort(vector<int> &nums)
+{
+    for (int i = 0; i < nums.size(); i++)
+    {
+        int minIndex = i;
+        for (int j = i + 1; j < nums.size(); j++)
+        {
+            if (nums[j] < nums[minIndex])
+            {
+                minIndex = j;
+            }
+        }
+        swap(nums[i], nums[minIndex]);
+    }
+} */
+
+/* void bubble_sort(vector<int> &nums)
+{
+    bool flag = true;
+    for (int i = nums.size() - 1; flag && i > 0; i--)
+    {
+        flag = false;
+        for (int j = 0; j < i; j++)
+        {
+            if (nums[j] > nums[j + 1])
+            {
+                swap(nums[j], nums[j + 1]);
+                flag = true;
+            }
+        }
+    }
+} */
+
+/* void quick_sort(vector<int> &nums, int left, int right)
+{
+    if (left < right)
+    {
+        int l = left, r = right;
+        int pivot = nums[left];
+        while (l < r)
+        {
+            while (l < r && nums[r] >= pivot)
+                r--;
+            nums[l] = nums[r];
+            while (l < r && nums[l] <= pivot)
+                l++;
+            nums[r] = nums[l];
+        }
+        nums[l] = pivot;
+        quick_sort(nums, left, l - 1);
+        quick_sort(nums, l + 1, right);
+    }
+} */

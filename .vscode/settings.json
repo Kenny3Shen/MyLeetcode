@@ -4,7 +4,8 @@
         "new": "cpp",
         "unordered_map": "cpp",
         "vector": "cpp",
-        "cmath": "cpp"
+        "cmath": "cpp",
+        "string": "cpp"
     },
     "cSpell.words": [
         "LEETCODE"
