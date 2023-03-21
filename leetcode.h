@@ -1,24 +1,6 @@
-#include <vector>
-#include <deque>
-#include <list>
-#include <forward_list>
-#include <string>
-#include <stack>
-#include <queue>
-#include <set>
-#include <map>
-#include <unordered_set>
-#include <unordered_map>
-#include <algorithm>
-#include <numeric>
-#include <iomanip>
-#include <iostream>
-#include <sstream>
-#include <bitset>
-#include <regex>
-#include <cmath>
-using namespace std; // It is vital that never use "using namespace" in head file.
-using ll = long long;
+#include <bits/stdc++.h>
+#define ll long long
+using namespace std;
 using PII = pair<int, int>;
 #ifndef __MY_LEETCODE__ // guard防卫式声明
 #define __MY_LEETCODE__
