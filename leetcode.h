@@ -1,7 +1,5 @@
 #include <bits/stdc++.h>
-#define ll long long
 using namespace std;
-using PII = pair<int, int>;
 #ifndef __MY_LEETCODE__ // guard防卫式声明
 #define __MY_LEETCODE__
 
@@ -26,6 +24,7 @@ struct TreeNode
 #endif
 
 // priority_queue<int, vector<int>, less<int>> pq; 默认大根堆，每次弹出最大值
+// sort默认是按照pair的first升序排序，如果first相同，则按照second进行升序排序
 
 /* class UnionFind
 {
