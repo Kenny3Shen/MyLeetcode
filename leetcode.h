@@ -24,23 +24,20 @@ struct TreeNode
 #endif
 
 // priority_queue<int, vector<int>, less<int>> pq; 默认大根堆，每次弹出最大值
-// sort默认是按照pair的first升序排序，如果first相同，则按照second进行升序排序
+// sort pair<int,int>默认是按照pair的first升序排序，如果first相同，则按照second进行升序排序
 
 /* class UnionFind
 {
 private:
     vector<int> parent;
     vector<int> rank;
-    int mergeCount = 0;
 
 public:
-    UnionFind(int n) : parent(vector<int>(n)), rank(vector<int>(n, 1))
+    UnionFind(int n) : parent(n), rank(n, 1)
     {
         for (int i = 0; i < n; i++)
             parent[i] = i;
     };
-
-    ~UnionFind();
 
     int Find(int x)
     {
@@ -53,14 +50,62 @@ public:
         if (xRoot != yRoot)
         {
             // parent[yRoot] = xRoot;
-            mergeCount++;                   // 只有不属于一个集合时，合并才次数加1
             if (rank[yRoot] <= rank[xRoot])
-                parent[yRoot] = xRoot;      // yRoot挂到xRoot上
+                parent[yRoot] = xRoot; // yRoot挂到xRoot上
             else
-                parent[xRoot] = yRoot;      // xRoot挂到yRoot上
+                parent[xRoot] = yRoot; // xRoot挂到yRoot上
             if (rank[yRoot] == rank[xRoot])
-                rank[xRoot]++;              // 秩相同时才加1
+                rank[xRoot]++; // 秩相同时才加1
         }
+    }
+}; */
+
+/* class TrieNode
+{
+private:
+    vector<TrieNode *> children;
+    bool isEnd;
+
+public:
+    TrieNode() : children(26), isEnd(false) {}
+
+    void insert(string &w)
+    {
+        TrieNode *node = this;
+        for (char &c : w)
+        {
+            int idx = c - 'a';
+            if (node->children[idx] == nullptr)
+                node->children[idx] = new TrieNode();
+            node = node->children[idx];
+        }
+        node->isEnd = true;
+    }
+
+    bool search(string &w) // search a complete word
+    {
+        TrieNode *node = this;
+        for (int i = 0; i < w.size(); i++)
+        {
+            int idx = w[i] - 'a';
+            if (!node->children[idx])
+                return false;
+            node = node->children[idx];
+        }
+        return node->isEnd;
+    }
+
+    bool isPrefix(string &w) // search existing words which has prefix w
+    {
+        TrieNode *node = this;
+        for (int i = 0; i < w.size(); i++)
+        {
+            int idx = w[i] - 'a';
+            if (!node->children[idx])
+                return false;
+            node = node->children[idx];
+        }
+        return true;
     }
 }; */
 

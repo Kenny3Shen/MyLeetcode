@@ -68,7 +68,7 @@ private:
     vector<int> rank;
 
 public:
-    UnionFind(int n) : parent(vector<int>(n)), rank(vector<int>(n, 1))
+    UnionFind(int n) : parent(n), rank(n, 1)
     {
         for (int i = 0; i < n; i++)
             parent[i] = i;
@@ -110,20 +110,20 @@ public:
     }
     bool validPath(int n, vector<vector<int>> &edges, int source, int destination)
     {
-        /* if(source == destination)
+        if(source == destination)
             return true;
         UnionFind uf(n);
         for(auto &e : edges)
             uf.Union(e[0], e[1]);
-        return uf.Find(source) == uf.Find(destination); */
-        vector<bool> visited(n, false);
+        return uf.Find(source) == uf.Find(destination);
+        /* vector<bool> visited(n, false);
         vector<vector<int>> adjacent(n);
         for (auto &e : edges)
         {
             adjacent[e[0]].push_back(e[1]);
             adjacent[e[1]].push_back(e[0]);
         }
-        return dfs(source, destination, adjacent, visited);
+        return dfs(source, destination, adjacent, visited); */
         /* queue<int> q;
         q.push(source);
         visited[source] = true;

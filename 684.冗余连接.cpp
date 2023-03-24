@@ -61,7 +61,7 @@
 class Solution
 {
 public:
-    //树是有n - 1条边的有向无环图
+    // 树是有n - 1条边的有向无环图
     int Find(vector<int> &parent, int x)
     {
         if (parent[x] == x)
