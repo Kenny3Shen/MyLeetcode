@@ -55,7 +55,6 @@
  *
  */
 #include "leetcode.h"
-#include "leetcode.h"
 // @lc code=start
 class Solution
 {
@@ -63,16 +62,12 @@ public:
     bool findSubarrays(vector<int> &nums)
     {
         unordered_map<int, int> m;
-        for(int n : nums)
-            m[n]++;
-        for(auto i : m)
+        for (int i = 0; i < nums.size() - 1; i++)
         {
-            if(i.second > 2)
+            int t = nums[i] + nums[i + 1];
+            m[t]++;
+            if (m[t] == 2)
                 return true;
-            else if(i.second > 1 && m.size() > 1)
-                return true;
-            else 
-                continue;
         }
         return false;
     }
