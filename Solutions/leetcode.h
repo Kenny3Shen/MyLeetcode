@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-using namespace std;
+using namespace std; //but never use namespace in head file
 #ifndef __MY_LEETCODE__ // guard防卫式声明
 #define __MY_LEETCODE__
 

@@ -1,4 +1,4 @@
-# MyLeetcode
+# MyLeetCode
 Record my code solutions in leetcode
 
 Znee1
