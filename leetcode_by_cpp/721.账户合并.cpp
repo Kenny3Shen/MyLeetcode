@@ -80,14 +80,24 @@ public:
     }
     int find(int x)
     {
-        return parent[x] == x ? x : parent[x] = find(parent[x]);
+        if( x != parent[x])
+            parent[x] = find(parent[x]);
+        return parent[x];
     }
 
     void Union(int x, int y)
     {
-        int xr = find(x), yr = find(y);
-        if (xr != yr)
-            parent[yr] = xr;
+        int xRoot = find(x), yRoot = find(y);
+        if (xRoot != yRoot)
+        {
+            // parent[yRoot] = xRoot;
+            if (rank[yRoot] <= rank[xRoot])
+                parent[yRoot] = xRoot; // yRoot挂到xRoot上
+            else
+                parent[xRoot] = yRoot; // xRoot挂到yRoot上
+            if (rank[yRoot] == rank[xRoot])
+                rank[xRoot]++; // 秩相同时才加1
+        }
     }
 };
 

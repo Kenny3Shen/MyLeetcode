@@ -80,12 +80,10 @@ impl UnionFind {
     }
 
     fn find(&mut self, x: usize) -> usize {
-        if self.parent[x] == x {
-            x
-        } else {
-            self.parent[x] = self.find(x);
-            self.parent[x]
+        if self.parent[x] != x {
+            self.parent[x] = self.find(self.parent[x]);
         }
+        self.parent[x]
     }
 
     fn union(&mut self, x: usize, y: usize) {
@@ -104,30 +102,29 @@ impl UnionFind {
 impl Solution {
     pub fn accounts_merge(accounts: Vec<Vec<String>>) -> Vec<Vec<String>> {
         let n = accounts.len();
-        let mut uf = UnionFind::new(n);
+        let mut uf: UnionFind = UnionFind::new(n);
         let mut res: Vec<Vec<String>> = Vec::new();
-        let mut hash = HashMap::new();
-        for i in (0..n) {
-            let m = accounts[i].len();
-            for j in (1..m) {
-                let email = accounts[i][j].clone();
-                let t = hash.entry(email.clone()).or_insert(i);
-                uf.union(i, *t);
+        let mut email_to_id: HashMap<String, usize> = HashMap::new();
+        for i in 0..n {
+            for email in accounts[i].iter().skip(1) {
+                let t = email_to_id.entry(email.clone()).or_insert(i); //bind email to account_id
+                uf.union(i, *t); //the accounts[i] point to the same parent (account_id)
             }
         }
 
-        let mut hash2: HashMap<usize, Vec<String>> = HashMap::new();
-        for (k, v) in hash {
-            let account_id = uf.find(v);
-            let t = hash2.entry(account_id).or_insert(Vec::new());
-            t.push(k.clone());
+        let mut id_to_email: HashMap<usize, Vec<String>> = HashMap::new();
+        for (k, v) in email_to_id.iter_mut() {
+            let account_id = uf.find(*v); //find the parent of this email
+            let t = id_to_email.entry(account_id).or_insert(Vec::new());
+            t.push(k.clone()); // add email for this parent
         }
-        for (k, v) in hash2.into_iter() {
-            let mut c = v.clone();
-            c.sort_unstable();
-            c.insert(0, accounts[k][0].clone());
-            res.push(c);
+
+        for (k, v) in id_to_email.iter_mut() {
+            v.sort_unstable(); // sort by ascii order
+            v.insert(0, accounts[*k][0].clone());
+            res.push(v.to_vec());
         }
+
         res
     }
 }
