@@ -1,5 +1,5 @@
 /*
- * @lc app=leetcode.cn id=2455 lang=rust
+ * @lc app=leetcode.cn id=2455 lang=cpp
  *
  * [2455] 可被三整除的偶数的平均值
  *
@@ -45,20 +45,23 @@
  *
  *
  */
-
-use std::vec;
-
+#include "leetcode.h"
 // @lc code=start
-impl Solution {
-    pub fn average_value(nums: Vec<i32>) -> i32 {
-        let v: Vec<i32> = nums.into_iter().filter(|x| x % 6 == 0).collect();
-        let len = v.len() as i32;
-        let s: i32 = v.iter().sum();
-        if v.len() == 0 {
-            0
-        } else {
-            s / len
+class Solution
+{
+public:
+    int averageValue(vector<int> &nums)
+    {
+        int res = 0, len = 0;
+        for (int &n : nums)
+        {
+            if (n % 6 == 0)
+            {
+                res += n;
+                len++;
+            }
         }
+        return len ? res / len : 0;
     }
-}
+};
 // @lc code=end
