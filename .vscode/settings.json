@@ -21,6 +21,7 @@
         "valarray": "cpp"
     },
     "cSpell.words": [
+        "Deque",
         "LEETCODE",
         "nums"
     ]
