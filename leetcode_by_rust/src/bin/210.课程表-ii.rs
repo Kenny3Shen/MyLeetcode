@@ -66,32 +66,44 @@ use std::collections::VecDeque;
 impl Solution {
     pub fn find_order(num_courses: i32, prerequisites: Vec<Vec<i32>>) -> Vec<i32> {
         let num_courses = num_courses as usize;
+        let mut in_degree = vec![0_usize; num_courses];
         let mut graph = vec![vec![]; num_courses];
-        let mut res = vec![];
-        let mut in_degree = vec![0; num_courses];
+        let mut res = Vec::with_capacity(num_courses);
+        let mut queue = VecDeque::new();
 
-        for prerequisite in prerequisites {
-            let (to, from) = (prerequisite[0] as usize, prerequisite[1] as usize);
-            graph[from].push(to);
+        for p in prerequisites {
+            let (to, from) = (p[0] as usize, p[1] as usize);
             in_degree[to] += 1;
+            graph[from].push(to);
         }
 
-        let mut queue = VecDeque::new();
         for (i, &degree) in in_degree.iter().enumerate() {
             if degree == 0 {
                 queue.push_back(i);
+                res.push(i as i32);
             }
         }
-        while !queue.is_empty() {
-            let from = queue.pop_front().unwrap();
-            res.push(from as i32);
-            for &to in graph[from].iter() {
+
+        while let Some(out_from) = queue.pop_front() {
+            for &to in graph[out_from].iter() {
                 in_degree[to] -= 1;
                 if in_degree[to] == 0 {
                     queue.push_back(to);
+                    res.push(to as i32);
                 }
             }
         }
+        // while !queue.is_empty() {
+        //     let out_from = queue.pop_front().unwrap();
+        //     res.push(out_from as i32);
+        //     for &to in graph[out_from].iter() {
+        //         in_degree[to] -= 1;
+        //         if in_degree[to] == 0 {
+        //             queue.push_back(to);
+        //         }
+        //     }
+        // }
+
         if res.len() == num_courses {
             res
         } else {
