@@ -70,10 +70,13 @@
 
 // @lc code=start
 impl Solution {
+    // 对 nums1: &mut Vec<i32> 以及 nums2: &mut Vec<i32>
+    // nums1 与 nums2 是指向 vector 的不可变指针, 即我们无法修改指向 vector 的指针的地址
+    // 但是可以修改指针指向的数组的内容，因为 vector 本身是可变的
     pub fn merge(nums1: &mut Vec<i32>, m: i32, nums2: &mut Vec<i32>, n: i32) {
-        let mut index = (m + n) as usize;
-        let mut m = m as usize;
-        let mut n = n as usize;
+        // O(m + n)
+        let (mut m, mut n) = (m as usize, n as usize);
+        let mut index = m + n;
         while m > 0 && n > 0 {
             if nums1[m - 1] > nums2[n - 1] {
                 nums1[index - 1] = nums1[m - 1];

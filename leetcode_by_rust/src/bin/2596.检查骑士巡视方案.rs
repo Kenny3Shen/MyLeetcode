@@ -71,8 +71,8 @@ impl Solution {
             }
         }
         for i in 1..n * n {
-            if let Some(&(x, y)) = map.get(&i) {
-                if let Some(&(x0, y0)) = map.get(&(i - 1)) {
+            if let (x, y) = map[&i] { // runtime panic if out of index
+                if let Some(&(x0, y0)) = map.get(&(i - 1)) { // return None if out of index
                     if !((x - x0).abs() == 1 && (y - y0).abs() == 2
                         || (x - x0).abs() == 2 && (y - y0).abs() == 1)
                     {
