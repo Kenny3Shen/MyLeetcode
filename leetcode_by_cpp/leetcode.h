@@ -1,4 +1,21 @@
-#include <bits/stdc++.h>
+#include <vector>
+#include <string>
+#include <iostream>
+#include <algorithm>
+#include <queue>
+#include <stack>
+#include <unordered_map>
+#include <unordered_set>
+#include <map>
+#include <set>
+#include <cmath>
+#include <numeric>
+#include <functional>   
+#include <sstream>
+#include <iomanip>
+#include <bitset>
+#include <list>
+#include <deque>
 using namespace std; //but never use namespace in head file
 #ifndef __MY_LEETCODE__ // guard防卫式声明
 #define __MY_LEETCODE__
