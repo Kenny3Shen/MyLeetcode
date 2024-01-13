@@ -69,14 +69,14 @@ impl Solution {
         }
         for word in words2 {
             *map2.entry(word).or_insert(0) += 1;
-        }
+        Leet
         let mut res = 0;
         for (word, cnt) in map1{
             if cnt == 1 && map2.get(&word) == Some(&1) {
                 res += 1;
             }
         }
-        res
+        return res;
     }
 }
 // @lc code=end
