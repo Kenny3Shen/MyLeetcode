@@ -92,12 +92,5 @@ impl SmallestInfiniteSet {
         self.set.insert(num);
     }
 }
-
-/**
- * Your SmallestInfiniteSet object will be instantiated and called as such:
- * let obj = SmallestInfiniteSet::new();
- * let ret_1: i32 = obj.pop_smallest();
- * obj.add_back(num);
- */
 // @lc code=end
 
