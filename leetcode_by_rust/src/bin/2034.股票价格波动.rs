@@ -116,17 +116,5 @@ impl StockPrice {
         *self.price_cnt.iter().next().unwrap().0
     }
 }
-
-
-
-
-/**
- * Your StockPrice object will be instantiated and called as such:
- * let obj = StockPrice::new();
- * obj.update(timestamp, price);
- * let ret_2: i32 = obj.current();
- * let ret_3: i32 = obj.maximum();
- * let ret_4: i32 = obj.minimum();
- */
 // @lc code=end
 
