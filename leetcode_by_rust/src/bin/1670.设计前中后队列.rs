@@ -149,16 +149,5 @@ impl FrontMiddleBackQueue {
     }
 }
 
-
-/**
- * Your FrontMiddleBackQueue object will be instantiated and called as such:
- * let obj = FrontMiddleBackQueue::new();
- * obj.push_front(val);
- * obj.push_middle(val);
- * obj.push_back(val);
- * let ret_4: i32 = obj.pop_front();
- * let ret_5: i32 = obj.pop_middle();
- * let ret_6: i32 = obj.pop_back();
- */
 // @lc code=end
 
