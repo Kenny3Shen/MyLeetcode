@@ -72,7 +72,6 @@ impl Solution {
                 && prev_val.map_or(true, |val| val != node_val)
             {
                 tail.next = Some (node); // 如果当前节点是唯一的（值不等于下一个节点或前一个节点的值），则将其添加到新链表中
-
                 tail = tail.next.as_mut ().unwrap (); // 更新 `tail` 为新链表的最后一个节点
             }
             prev_val = Some (node_val); // 更新 `prev_val` 为当前节点的值
