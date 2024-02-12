@@ -47,12 +47,12 @@ public:
     int reverse(int x)
     {
         if (x / 10 == 0)
-            return x; //平凡情况：若x∈[-9,9]，则直接返回其本身
+            return x; // 平凡情况：若 x∈[-9,9]，则直接返回其本身
         int y = 0;
         while (x)
         {
-            if (y > __INT_MAX__ / 10 || y < (__INT_MAX__ + 1) / 10)
-                //溢出判断，其中根据补码原理->__INT_MAX__ + 1 = INT_MIN
+            if (y > INT_MAX / 10 || y < (INT_MAX + 1) / 10)
+                // 溢出判断，其中根据补码原理 ->__INT_MAX__ + 1 = INT_MIN
                 return 0;
             y *= 10;
             y += x % 10;
