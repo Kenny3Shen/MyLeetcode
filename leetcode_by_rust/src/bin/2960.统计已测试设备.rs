@@ -77,19 +77,27 @@
 // @lc code=start
 impl Solution {
     pub fn count_tested_devices(mut battery_percentages: Vec<i32>) -> i32 {
-        let n = battery_percentages.len();
-        let mut tested = 0;
-        for i in 0..n {
-            if battery_percentages[i] > 0 {
-                tested += 1;
-                for j in i + 1..n {
-                    if battery_percentages[j] > 0 {
-                        battery_percentages[j] -= 1;
-                    }
-                }
+        // let n = battery_percentages.len();
+        // let mut tested = 0;
+        // for i in 0..n {
+        //     if battery_percentages[i] > 0 {
+        //         tested += 1;
+        //         for j in i + 1..n {
+        //             if battery_percentages[j] > 0 {
+        //                 battery_percentages[j] -= 1;
+        //             }
+        //         }
+        //     }
+        // }
+        // tested
+    
+        let mut cnt = 0;
+        for b in battery_percentages {
+            if b - cnt > 0{
+                cnt += 1;
             }
         }
-        tested
+        cnt
     }
 }
 // @lc code=end
