@@ -25,7 +25,7 @@ impl Solution {
                 i += 1;
             }
         }
-        ans as i64
+        ans as i64c
     }
 }
 // @lc code=end
