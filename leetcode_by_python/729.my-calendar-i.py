@@ -10,8 +10,8 @@
 
 # @lcpr-template-end
 # @lc code=start
-from sortedcontainers import SortedDict
 
+from sortedcontainers import SortedDict
 
 class MyCalendar:
 
