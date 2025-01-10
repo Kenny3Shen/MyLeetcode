@@ -1,1 +1,3 @@
 leetcode_by_rust/target
+.lcpr_data/
+.vscode/
