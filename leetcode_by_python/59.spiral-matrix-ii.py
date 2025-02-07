@@ -12,7 +12,7 @@ from typing import List
 # @lc code=start
 class Solution:
     def generateMatrix(self, n: int) -> List[List[int]]:
-        res = [[0 * n] * n]
+        res = [[0] * n for _ in range(n)]
         start, end = 1, n * n
         left, right, top, bottom = 0, n - 1, 0, n - 1
         while start <= end:
