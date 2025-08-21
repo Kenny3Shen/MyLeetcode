@@ -36,29 +36,23 @@ from typing import List
 # @lc code=start
 class Solution:
     def solveNQueens(self, n: int) -> List[List[str]]:
-        ans = []  # 存储所有符合条件的N皇后布局
+        ans = []
         col = []
-        vis = [False] * n  # 记录每一列是否被占用
-        diag1 = [False] * (2 * n - 1)  # 记录左上到右下对角线是否被占用
-        diag2 = [False] * (2 * n - 1)  # 记录右上到左下对角线是否被占用
+        diag1 = [False] * (2 * n - 1)
+        diag2 = [False] * (2 * n - 1)
+        vis = [False] * n
 
-        def dfs(r):
-            # 如果已经处理完所有行，找到一个有效解
-            if r == n:
-                # 将列位置转换为棋盘表示：每个元素是一行，'Q'表示皇后，'.'表示空位
+        def dfs(i):
+            if i == n:
                 ans.append(["." * c + "Q" + "." * (n - c - 1) for c in col])
                 return
-
-            # 尝试在当前行的每个可用列放置皇后
-            for c in range(n):
-                # 检查对角线冲突
-                if not vis[c] and not diag1[r + c] and not diag2[r - c + n - 1]:
-                    col.append(c) # 记录当前列
-                    vis[c] = diag1[r + c] = diag2[r - c + n - 1] = True
-                    dfs(r + 1)  # 递归处理下一行，更新可用列集合
-                    vis[c] = diag1[r + c] = diag2[r - c + n - 1] = False
-                    col.pop() # 回溯，撤销当前列
-        # 从第0行开始，初始时所有列都可用
+            for j in range(n):
+                if not vis[j] and not diag1[i + j] and not diag2[i - j + n - 1]:
+                    col.append(j)
+                    vis[j] = diag1[i + j] = diag2[i - j + n - 1] = True
+                    dfs(i + 1)
+                    col.pop()
+                    vis[j] = diag1[i + j] = diag2[i - j + n - 1] = False
         dfs(0)
         return ans
 
